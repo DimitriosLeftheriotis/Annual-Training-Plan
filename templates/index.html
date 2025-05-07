@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset = "utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script>
+        function compare_string_items(event) {
+            const str3 = document.getElementById("Training Intensity").value.split(",");
+            const str4 = document.getElementById("Intensity Weeks").value.split(",");
+            const result = document.getElementById("result");
+            if (str3.length !== str4.length) {
+                result.textContent = "Δεν υπαρχει αντιστοιχία στοιχείων στην ένταση προπόνησης ή δεν έχουν χωριστεί οι τιμές με κόμμα.";
+                event.preventDefault();
+                return;
+            }
+            result.textContent = "Τα στοιχεία αντιστοιχούν.";
+
+            const str1 = document.getElementById("Training Volume").value.split(",");
+            const str2 = document.getElementById("Volume Weeks").value.split(",");
+            const result2 = document.getElementById("result");
+            if (str1.length !== str2.length) {
+                result.textContent = "Δεν υπάρχει αντιστοιχία στοιχείων στον όγκο προπόνησης ή δεν έχουν χωριστεί οι τιμές με κόμμα.";
+                event.preventDefault();
+                return;
+            }
+            result2.textContent = "Τα στοιχεία αντιστοιχούν.";
+        }        
+    </script>
+    
+    </head>   
+<body>
+    <h1> Δώστε τα δεδομένα</h1>
+
+    <form onsubmit="compare_string_items(event)" action="/submit" method = "post" >
+        
+        <label for = "enter_value">Τέλος περιόδου προετοιμασίας:</label><br>    
+        <input type = "number" id = "preperation period" name = "End of preperation period" required><br>
+
+        <label for = "enter_value">Τέλος περιόδου αγώνων:</label><br>
+        <input type = "number" id = "competition" name = "End of competition period" required><br>
+
+        <p>Χωρίστε τα παρακάτω δεδομένα εισόδου με κόμμα</p>
+
+        <label for = "enter_value">Εβδομάδες για αθλητικά τεστ:</label><br>
+        <input multiple type = "text" id = "test weeks" name = "Weeks for tests" required><br>
+
+        <label for = "enter_value">Εβδομάδες για ιατρικές εξετάσεις:</label><br>
+        <input multiple type = "text" id = "medical tests period" name = "Weeks for medical tests" required><br>
+
+        <label for = "enter_value">Εβδομάδες αγώνων:</label><br>
+        <input multiple type = "text" id = "competition weeks" name = "Weeks for competition" required><br><br>
+        
+        <label for = "enter_value">Όγκος προπόνησης:</label><br>
+        <input multiple type = "text" id = "Training Volume" name = "Training Volume" required><br>
+        <label for = "enter_value">Εβδομάδες όγκου:</label><br>
+        <input multiple type = "text"  id = "Volume Weeks" name = "Volume Weeks" required><br><br>
+        
+
+        <label for = "enter_value">Ένταση προπόνησης:</label><br>
+        <input multiple type = "text" id = "Training Intensity" name = "Training Intensity" required><br>
+        <label for = "enter_value">Εβδομάδες έντασης:</label><br>
+        <input multiple type = "text" id = "Intensity Weeks" name = "Intensity Weeks" required><br><br>
+        <button onclick="compare_string_items()">Υποβολή</button>
+    </form>
+
+    <p id="result2"></p>
+    <p id="result"></p>
+    
+    {% if html_data %}
+        <img src = "{{ plot_url }}" alt = "Data Visualisation">
+    {% endif %}
+</body>
+</html>
