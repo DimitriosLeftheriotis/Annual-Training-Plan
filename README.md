@@ -20,7 +20,7 @@ This proposal involves creating an application that graphically displays the ann
    ```
 2. **Install dependencies**:
    ```bash
-   pip install flask matplotlib numpy
+   pip install flask matplotlib numpy webbrowser threading io base 64
    ```
 
 ## 🚀 Running the Application
@@ -31,9 +31,9 @@ python app.py
 The application will run on http://localhost:5000 by default.
 
 ## 🔧 Methodology
-- The majority of the code will be written in Python, utilizing Flask.
-- HTML and JavaScript will be used to create a user-friendly interface.
-- The application will run on port 5000 for the purposes of the project but can be deployed to a server if needed.
-- Libraries such as matplotlib and numpy will be used to support the application.
+- The majority of the code is written in Python, utilizing Flask.
+- HTML and JavaScript is used to create a user-friendly interface.
+- The application runs on port 5000 for the purposes of the project but can be deployed to a server if needed.
+- The libraries matplotlib, numpy, flask, webbrowser, threading, io και base64 were used to support the application.
 
 ---
